@@ -1,0 +1,80 @@
+======================================================================
+LAB WORK 1: Benchmarking Algorithmic Growth Rates
+======================================================================
+Python 3.12.3 on Linux-6.18.44-fc-v726-x86_64-with-glibc2.39
+Repeats per point: 7; statistic: MEDIAN; seed: 25007
+
+list indexing        n=     1000  t=5.787e-08 s
+list indexing        n=    10000  t=5.708e-08 s
+list indexing        n=   100000  t=5.688e-08 s
+list indexing        n=  1000000  t=5.817e-08 s
+list indexing        n= 10000000  t=5.680e-08 s
+
+binary search        n=     1000  t=6.055e-07 s
+binary search        n=    10000  t=9.258e-07 s
+binary search        n=   100000  t=1.165e-06 s
+binary search        n=  1000000  t=1.393e-06 s
+binary search        n= 10000000  t=1.691e-06 s
+
+linear search        n=    10000  t=2.586e-04 s
+linear search        n=    50000  t=1.304e-03 s
+linear search        n=   100000  t=2.636e-03 s
+linear search        n=   500000  t=1.342e-02 s
+linear search        n=  1000000  t=2.633e-02 s
+
+merge sort           n=     1000  t=1.156e-03 s
+merge sort           n=     5000  t=6.898e-03 s
+merge sort           n=    10000  t=1.477e-02 s
+merge sort           n=    50000  t=8.725e-02 s
+merge sort           n=   100000  t=2.043e-01 s
+
+pair counter         n=      100  t=1.513e-04 s
+pair counter         n=      200  t=5.971e-04 s
+pair counter         n=      400  t=2.797e-03 s
+pair counter         n=      800  t=1.233e-02 s
+pair counter         n=     1600  t=5.033e-02 s
+
+subset enumeration   n=        8  t=1.120e-04 s
+subset enumeration   n=       10  t=5.187e-04 s
+subset enumeration   n=       12  t=2.460e-03 s
+subset enumeration   n=       14  t=1.134e-02 s
+subset enumeration   n=       16  t=5.126e-02 s
+
+Normalised-time stability  [T(n)/f(n) at max n  divided by  at min n]
+  list indexing        O(1)        ratio = 0.98
+  binary search        O(log n)    ratio = 1.20
+  linear search        O(n)        ratio = 1.02
+  merge sort           O(n log n)  ratio = 1.06
+  pair counter         O(n^2)      ratio = 1.30
+  subset enumeration   O(2^n)      ratio = 0.89
+
+Saved plots: lab1_time_vs_n.png, lab1_normalised.png
+Saved lab1_comparison_table.md and lab1_timing_data.csv
+
+======================================================================
+LAB WORK 2: Prefix Averages
+======================================================================
+Python 3.12.3 on Linux-6.18.44-fc-v726-x86_64-with-glibc2.39
+Validation tests:
+  [PASS] empty      [] -> []
+  [PASS] singleton  [5] -> [5.0]
+  [PASS] positive   [1, 2, 3, 4, 5] -> [1.0, 1.5, 2.0, 2.5, 3.0]
+  [PASS] negative   [-1, -2, -3, -4] -> [-1.0, -1.5, -2.0, -2.5]
+  [PASS] mixed      [3, -3, 10, -20, 7, 0] -> [3.0, 0.0, 3.3333333333333335, -2.5, -0.6, -0.5]
+  [PASS] floats     [0.1, 0.2, 0.3, 0.4] -> [0.1, 0.15000000000000002, 0.20000000000000004, 0.25]
+  [PASS] 200 random integer sequences identical
+
+Median of 7 trials (seconds)
+       n  prefix_average1  prefix_average2  speed-up
+     100         0.000158         0.000006     27.0x
+     200         0.000586         0.000012     50.7x
+     400         0.002442         0.000025     97.7x
+     800         0.011835         0.000061    194.9x
+    1600         0.044210         0.000114    387.8x
+    3200         0.196337         0.000261    753.3x
+   10000 (skipped O(n^2))         0.000798
+  100000 (skipped O(n^2))         0.008610
+ 1000000 (skipped O(n^2))         0.098898
+
+Saved lab2_prefix_average_plot.png
+Empirical exponents: prefix_average1 ~ n^2.06, prefix_average2 ~ n^1.10
